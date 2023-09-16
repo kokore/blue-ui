@@ -1,3 +1,4 @@
+import { ThreeItemGrid } from "@/components/grid/three-items";
 import { Carousel } from "@/components/carousel";
 import { Suspense } from "react";
 
@@ -13,6 +14,7 @@ export const metadata = {
 export default async function HomePage() {
   return (
     <>
+      <ThreeItemGrid />
       <Suspense>
         <Carousel />
       </Suspense>

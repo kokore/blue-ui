@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { GridTileImage } from "@/components/grid/tile";
 import { useGetProductsQuery } from "@/redux/services/productApi";
 import { useEffect } from "react";
@@ -26,8 +25,6 @@ export function Carousel() {
 
   const carouselProducts = [...productState];
 
-  console.log(">>carouselProducts", carouselProducts);
-
   return (
     <div className=" w-full overflow-x-auto pb-6 pt-1">
       <ul className="flex animate-carousel gap-4">
@@ -36,10 +33,7 @@ export function Carousel() {
             key={`${product.id}${i}`}
             className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
           >
-            <Link
-              href={`/product/${product.id}`}
-              className="relative h-full w-full"
-            >
+            <div className="relative h-full w-full">
               <GridTileImage
                 alt={product.name}
                 label={{
@@ -50,10 +44,9 @@ export function Carousel() {
                 src={product.image}
                 fill
                 priority={true}
-                quality={50}
                 sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
               />
-            </Link>
+            </div>
           </li>
         ))}
       </ul>
