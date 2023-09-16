@@ -12,7 +12,7 @@ export const metadata = {
   title: "Blue Vending Machine",
 };
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <>
       <ThreeItemGrid />
