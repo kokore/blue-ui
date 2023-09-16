@@ -12,6 +12,7 @@ export function GridTileImage({
   isInteractive?: boolean;
   active?: boolean;
   label?: {
+    quantity: number;
     id: string;
     title: string;
     amount: string;
@@ -35,11 +36,12 @@ export function GridTileImage({
           className={clsx("relative h-full w-full object-contain", {
             "transition duration-300  ease-in-out group-hover:scale-105":
               isInteractive,
+            grayscale: label?.quantity === 0,
           })}
           {...props}
         />
       ) : null}
-      {label ? (
+      {label && label.quantity !== 0 ? (
         <Label
           id={label.id}
           title={label.title}

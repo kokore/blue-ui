@@ -42,6 +42,7 @@ export function Carousel() {
                   amount: product.price,
                   currencyCode: "THB",
                   id: product.id,
+                  quantity: product.quantity,
                 }}
                 src={product.image}
                 fill
