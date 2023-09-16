@@ -3,10 +3,12 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import productSlice from "./slices/productSlice";
 import { api } from "./services/api";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
+import walletSlice from "./slices/walletSlice";
 
 export const store = configureStore({
   reducer: {
     product: productSlice,
+    wallet: walletSlice,
     [api.reducerPath]: api.reducer,
   },
   devTools: process.env.NODE_ENV !== "production",
