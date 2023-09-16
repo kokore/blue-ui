@@ -12,6 +12,7 @@ export function GridTileImage({
   isInteractive?: boolean;
   active?: boolean;
   label?: {
+    id: string;
     title: string;
     amount: string;
     currencyCode: string;
@@ -40,6 +41,7 @@ export function GridTileImage({
       ) : null}
       {label ? (
         <Label
+          id={label.id}
           title={label.title}
           amount={label.amount}
           currencyCode={label.currencyCode}

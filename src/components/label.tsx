@@ -1,17 +1,38 @@
 import clsx from "clsx";
 import Price from "./price";
+import { usePurchaseRequestMutation } from "@/redux/services/productApi";
+import { useDispatch } from "react-redux";
+import { setProductResponse } from "@/redux/slices/productSlice";
+import { setWalletResponse } from "@/redux/slices/walletSlice";
 
 const Label = ({
+  id,
   title,
   amount,
   currencyCode,
   position = "bottom",
 }: {
+  id: string;
   title: string;
   amount: string;
   currencyCode: string;
   position?: "bottom" | "center";
 }) => {
+  const dispatch = useDispatch();
+  const [purchaseRequest] = usePurchaseRequestMutation();
+  const purchase = () => {
+    const request = {
+      productId: id,
+      quantity: 1,
+    };
+    purchaseRequest(request)
+      .unwrap()
+      .then((res) => {
+        dispatch(setProductResponse(res.data.products));
+        dispatch(setWalletResponse(res.data.wallet));
+      });
+  };
+
   return (
     <div
       className={clsx(
@@ -21,7 +42,10 @@ const Label = ({
         }
       )}
     >
-      <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+      <button
+        onClick={purchase}
+        className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white"
+      >
         <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
           {title}
         </h3>
@@ -31,7 +55,7 @@ const Label = ({
           currencyCode={currencyCode}
           currencyCodeClassName="hidden @[275px]/label:inline"
         />
-      </div>
+      </button>
     </div>
   );
 };

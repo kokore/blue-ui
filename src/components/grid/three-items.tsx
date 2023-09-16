@@ -33,6 +33,7 @@ function ThreeItemGridItem({
           priority={priority}
           alt={item.name}
           label={{
+            id: item.id,
             position: size === "full" ? "center" : "bottom",
             title: item.name as string,
             amount: "" + item.price,
@@ -47,7 +48,14 @@ function ThreeItemGridItem({
 export async function ThreeItemGrid() {
   const homepageItems = useTypedSelector(selectProducts);
 
-  if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
+  if (
+    !homepageItems ||
+    homepageItems.length === 0 ||
+    !homepageItems[0] ||
+    !homepageItems[1] ||
+    !homepageItems[2]
+  )
+    return null;
 
   const [firstProduct, secondProduct, thirdProduct] = homepageItems;
 

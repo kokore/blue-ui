@@ -19,9 +19,10 @@ export function Carousel() {
     if (data?.statusCode === 200) {
       dispatch(setProductResponse(data.data));
     }
-  }, [data, dispatch]);
+  }, [data, dispatch, productState]);
 
-  if (isLoading || isFetching) return <div></div>;
+  if (!productState || productState.length === 0 || isLoading || isFetching)
+    return null;
 
   const carouselProducts = [...productState];
 
@@ -40,6 +41,7 @@ export function Carousel() {
                   title: product.name,
                   amount: product.price,
                   currencyCode: "THB",
+                  id: product.id,
                 }}
                 src={product.image}
                 fill

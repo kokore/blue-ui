@@ -1,5 +1,5 @@
-import { ThreeItemGrid } from "@/components/grid/three-items";
 import { Carousel } from "@/components/carousel";
+import { ThreeItemGrid } from "@/components/grid/three-items";
 import { Suspense } from "react";
 
 export const runtime = "edge";
