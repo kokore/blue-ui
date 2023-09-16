@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="flex w-full items-center">
-        <div className="flex w-full">
+        <div className="flex w-full md:w-1/3">
           <Link
             href="/"
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
@@ -41,34 +41,38 @@ export default function Navbar() {
               {SITE_NAME}
             </div>
           </Link>
-          <div className="flex items-center mr-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            {Object.entries(walletCoinState).map(([k, v]: [string, number]) => {
-              return (
-                <div className="m-2" key={k + v}>
-                  <p>
-                    {k} : {v}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
 
-          <div className="flex items-center max-w-sm p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            {Object.entries(walletBanknotesState).map(
-              ([k, v]: [string, number]) => {
-                return (
-                  <div className="m-2" key={k + v}>
-                    <p>
-                      {k} : {v}
-                    </p>
-                  </div>
-                );
-              }
-            )}
-          </div>
+          <div className="has-tooltip">
+            <span className="tooltip rounded shadow-lg p-1  mt-8">
+              <div className="flex items-center mr-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                {Object.entries(walletCoinState).map(
+                  ([k, v]: [string, number]) => {
+                    return (
+                      <div className="m-2" key={k + v}>
+                        <p>
+                          {k} : {v}
+                        </p>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
 
-          <div className="flex items-center justify-end md:w-1/3">
-            <div>Total : {totalState}</div>
+              <div className="flex items-center max-w-sm p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                {Object.entries(walletBanknotesState).map(
+                  ([k, v]: [string, number]) => {
+                    return (
+                      <div className="m-2" key={k + v}>
+                        <p>
+                          {k} : {v}
+                        </p>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </span>
+            Total: {totalState}
           </div>
         </div>
       </div>
