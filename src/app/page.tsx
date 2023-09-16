@@ -9,6 +9,7 @@ export const metadata = {
   openGraph: {
     type: "website",
   },
+  title: "Blue Vending Machine",
 };
 
 export default async function HomePage() {
