@@ -46,7 +46,7 @@ function ThreeItemGridItem({
   );
 }
 
-export async function ThreeItemGrid() {
+export function ThreeItemGrid() {
   const homepageItems = useTypedSelector(selectProducts);
 
   if (

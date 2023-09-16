@@ -45,6 +45,7 @@ export const selectWalletCoins = (state: RootState) => state.wallet.coins;
 export const selectWalletBanknotes = (state: RootState) =>
   state.wallet.banknotes;
 export const selectWalletTotal = (state: RootState) => state.wallet.total;
+export const selectWalletId = (state: RootState) => state.wallet.id;
 
 export const { setWalletResponse } = walletSlice.actions;
 export default walletSlice.reducer;

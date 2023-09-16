@@ -1,6 +1,5 @@
 "use client";
 
-import MyDialog from "@/components/modal";
 import AddMoney from "@/components/modal/addmoney";
 import { useGetWalletQuery } from "@/redux/services/walletApi";
 import {
@@ -77,9 +76,9 @@ export default function Navbar() {
             Total: {totalState}
           </div>
 
-          {/* <div className="flex justify-end md:w-1/3">
+          <div className="flex justify-end md:w-1/3">
             <AddMoney />
-          </div> */}
+          </div>
         </div>
       </div>
     </nav>
